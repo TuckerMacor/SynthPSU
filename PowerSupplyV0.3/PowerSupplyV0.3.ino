@@ -147,19 +147,23 @@ void saveAndShutdown() {               //turn off the power supply
   display.setCursor(0, 0);
   display.println(F("Shutting Down"));
   display.display();
-  setLed(2, 1, 0);                    //dissable the output relays
+  setLed(2, 1, 0);                    //dissable the 12v output relays
   setLed(3, 1, 0);
-  setLed(4, 1, 0);
   display.setCursor(0, 9);
-  display.println(F("Outputs Off"));
+  display.println(F("+/- 12V off"));
   display.display();
   saveDataToEeprom();                 //save settings
   display.setCursor(0, 18);
   display.println(F("eeprom saved!"));
   display.display();
-  delay(3000);
+  delay(2000);                 //wait with only 5V on to let other modules save eeprom
+  setLed(4, 1, 0);
+  display.setCursor(0, 27);
+  display.println(F("5V Off"));
+  display.display();  
+  delay(350);
   digitalWrite(inputRelay, LOW);      //THE END - turn off the relay that is powering the arduino
-  delay(2000);
+  delay(9999);
 }
 
 void getVoltageValues() {             //read voltages from the analog pins
