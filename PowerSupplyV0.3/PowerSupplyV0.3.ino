@@ -1,9 +1,5 @@
 //Synth Power Supply by Tucker Macor
 //
-//
-//
-//
-//
 
 #include <EEPROM.h>                       //include eeprom to save settings
 #include <Wire.h>                         //oled stuff
